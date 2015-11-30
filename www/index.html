@@ -102,6 +102,26 @@
                 $scope.test();
             });
                  */       
+
+
+                 
+            app.controller('testController', function($scope, $http, $routeParams) {
+                $scope.Services = [];
+                $scope.test = function() {
+                    var params = (typeof($routeParams.id) != "undefined" && $routeParams.id != null) ? "?id=" + $routeParams.id : "";
+                    $http({method: 'POST', url: "http://192.168.1.105:3000/services.json", data: {service: { name:'testeservico'}}}).success(function(data2) {
+                        $scope.services = data2;
+
+
+                    });
+
+                };
+                $scope.test();
+            });
+                       
+
+
+
             app.controller('UsersController', function($scope, $http) {
                 $scope.users = [];
                 $scope.test = function() {
@@ -209,6 +229,15 @@
             })
             }]);
             
+
+            app
+            .config(["$routeProvider", function($routeProvider) {
+            $routeProvider
+            .when("/services2", {
+            templateUrl: "services2.html?" ,
+            controller: "testController"
+            })
+            }]);
           
         </script>
         <title>Hello World</title>
@@ -246,7 +275,7 @@
   <a class="tab-item" href="#/users">
     <i class="icon ion-ios7-people"></i>
   </a>
-  <a class="tab-item" href="#/services">
+  <a class="tab-item" href="#/services2">
     <i class="icon ion-wrench"></i>
     
   </a>
