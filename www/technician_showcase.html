@@ -24,20 +24,46 @@
    <blockquote>
    <b>{{micropost.content}}</b></p>
    <!-- <cite>{{micropost.user_id}}</cite> -->
-   <cite>{{micropost.userid_tech}}</cite>
+   <cite>{{micropost.userid_tech}} - {{micropost.evaluation}}</cite>
+
 </blockquote>
 </div>
- </div>   
 
-<select ng-model=" review.stars">
-<option value="1">Positivo</option>
-<option value="2">Negativo</option>
+ </div>  
+
+                <ul class="list">
+
+  <li class="item item-toggle">
+     Avaliar - {{evaluation_add}}
+     <label class="toggle toggle-assertive">
+
+       <input type="checkbox" ng-model="evaluation_add" ng-true-value="false" ng-false-value="true" />
+     <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+
+
+  </li>
+  <li>
+         <label class="item item-input">
+  <span class="input-label">Comentário</span>
+  <input type="text" ng-model="content_add"/>
+</label>
+</li>
+</ul>
+            
+   <!--  <input type="text" ng-model="content_add"/>       -->
+         
+
+
+     
+  <button ng-click="add()">Add</button>
 
   
   <!--<input type="text" ng-model="micropost.content">-->
-  <input type="text" ng-model="micropost.content"/>
-  <button ng-click="add()">Add</button>
-  <div class="item tabs tabs-secondary tabs-icon-left"  >
+  
+  <!--<div class="item tabs tabs-secondary tabs-icon-left"  >
     <a class="tab-item" href="#">
       <i class="icon ion-thumbsup"></i>
       Like
@@ -51,4 +77,4 @@
       Share
     </a>
   
-</div>
+</div>-->

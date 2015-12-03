@@ -51,7 +51,7 @@
                
         <script type="text/javascript">
             var app = angular.module('myApp', ['ionic','ngRoute']);
-
+            var evaluation_add = 'true';
             app.controller('MainController', function($scope, $http, $routeParams) {
                 $scope.city_id = null;
 
@@ -96,9 +96,11 @@
                 };
                 $scope.test();
                 $scope.add = function(){
-                    $http({method: 'POST', url: "http://192.168.1.105:3000/microposts.json", data: {micropost: { content:'teste de micropost', user_id:'1',userid_tech:'1'}}}).success(function(data2) {
+                    $http({method: 'POST', url: "http://192.168.1.105:3000/microposts.json", data: {micropost: { content: $scope.content_add, user_id: $scope.user.id ,userid_tech:'1', evaluation: $scope.evaluation_add}}}).success(function(data2) {
                         $scope.microposts.push(data2);
+
                     });
+
                 }
             });
              /*
