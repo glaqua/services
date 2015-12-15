@@ -12,7 +12,7 @@
     <h2>Tecnico: {{user.name}}</h2>
         <!-- <img class="full-image" src="delorean.jpg"> -->
     <p>Descrição: {{user.description}}</p>
-    <p>Criado em: {{user.created_at | date: 'MM/DD/YYYY'}}</p>
+    <p>Criado em: {{user.created_at | date: 'dd/mm/yyyy HH:mm'}}</p>
     <p>
       <a href="#" class="subdued">Positivo - Negativo</a>
       <a href="#" class="subdued">{{microposts.length}} Avaliações</a></p>
