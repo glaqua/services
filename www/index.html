@@ -22,9 +22,10 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
-        <!-- <meta name="viewport" content="name-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width,  -->
-        <!-- height=device-height, target-densitydpi=device-dpi" /> -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        
+       <!-- <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />-->
+
+       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
 
         <link href="lib/ionic/css/ionic.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
@@ -61,7 +62,7 @@
                 $scope.cities = [];
                 $scope.test = function() {
                     var params = (typeof($routeParams.state_id) != "undefined" && $routeParams.state_id != null) ? "?state_id=" + $routeParams.state_id : "";
-                    $http({method: 'GET', url: "http://192.168.1.105:3000/cities.json" + params}).success(function(data) {
+                    $http({method: 'GET', url: "http://192.168.1.106:3000/cities.json" + params}).success(function(data) {
                         $scope.cities = data;  
 
                     });
@@ -74,7 +75,7 @@
                 $scope.Technician = [];
                 $scope.test = function() {
                     var params = (typeof($routeParams.city_id) != "undefined" && $routeParams.city_id != null) ? "?city_id=" + $routeParams.city_id : "";
-                    $http({method: 'GET', url: "http://192.168.1.105:3000/technician.json" + params}).success(function(data) {
+                    $http({method: 'GET', url: "http://192.168.1.106:3000/technician.json" + params}).success(function(data) {
                         $scope.technician = data;
                     });
 
@@ -86,17 +87,17 @@
                 $scope.Users = [];
                 $scope.test = function() {
                     var params = (typeof($routeParams.id) != "undefined" && $routeParams.id != null) ? "?id=" + $routeParams.id : "";
-                    $http({method: 'GET', url: "http://192.168.1.105:3000/users/"+ $routeParams.id +".json"}).success(function(data) {
+                    $http({method: 'GET', url: "http://192.168.1.106:3000/users/"+ $routeParams.id +".json"}).success(function(data) {
                         $scope.user = data;
                     });
-                    $http({method: 'GET', url: "http://192.168.1.105:3000/users/"+ $routeParams.id +"/microposts.json"}).success(function(data2) {
+                    $http({method: 'GET', url: "http://192.168.1.106:3000/users/"+ $routeParams.id +"/microposts.json"}).success(function(data2) {
                         $scope.microposts = data2;
                     });
 
                 };
                 $scope.test();
                 $scope.add = function(){
-                    $http({method: 'POST', url: "http://192.168.1.105:3000/microposts.json", data: {micropost: { content: $scope.content_add, user_id: $scope.user.id ,userid_tech:'1', evaluation: $scope.evaluation_add}}}).success(function(data2) {
+                    $http({method: 'POST', url: "http://192.168.1.106:3000/microposts.json", data: {micropost: { content: $scope.content_add, user_id: $scope.user.id ,userid_tech:'1', evaluation: $scope.evaluation_add}}}).success(function(data2) {
                         $scope.microposts.push(data2);
 
                     });
@@ -108,7 +109,7 @@
                 $scope.Users = [];
                 $scope.test = function() {
                     var params = (typeof($routeParams.id) != "undefined" && $routeParams.id != null) ? "?id=" + $routeParams.id : "";
-                     $http({method: 'POST', url: "http://192.168.1.105:3000/microposts.json"}, data: {micropost: {'content: user_id: userid_tech'}}).success(function(data2) {
+                     $http({method: 'POST', url: "http://192.168.1.106:3000/microposts.json"}, data: {micropost: {'content: user_id: userid_tech'}}).success(function(data2) {
                         $scope.microposts = data2;
                     });
 
@@ -123,7 +124,7 @@
                 $scope.Services = [];
                 $scope.test = function() {
                     var params = (typeof($routeParams.id) != "undefined" && $routeParams.id != null) ? "?id=" + $routeParams.id : "";
-                    $http({method: 'POST', url: "http://192.168.1.105:3000/services.json", data: {service: { name:'testeservico'}}}).success(function(data2) {
+                    $http({method: 'POST', url: "http://192.168.1.106:3000/services.json", data: {service: { name:'testeservico'}}}).success(function(data2) {
                         $scope.services = data2;
 
 
@@ -137,7 +138,7 @@
                 $scope.Microposts = [];
                 $scope.test = function() {
                     var params = (typeof($routeParams.id) != "undefined" && $routeParams.id != null) ? "?id=" + $routeParams.id : "";
-                    $http({method: 'POST', url: "http://192.168.1.105:3000/microposts.json", data: {micropost: { content:'teste de micropost', user_id:'1',userid_tech:'1'}}}).success(function(data2) {
+                    $http({method: 'POST', url: "http://192.168.1.106:3000/microposts.json", data: {micropost: { content:'teste de micropost', user_id:'1',userid_tech:'1'}}}).success(function(data2) {
                         $scope.microposts = data2;
 
 
@@ -150,7 +151,7 @@
             app.controller('UsersController', function($scope, $http) {
                 $scope.Users = [];
                 $scope.test = function() {
-                    $http({method: 'GET', url: "http://192.168.1.105:3000/users.json"}).success(function(data) {
+                    $http({method: 'GET', url: "http://192.168.1.106:3000/users.json"}).success(function(data) {
                         $scope.users = data;
                     });
 
@@ -160,7 +161,7 @@
             app.controller('StatesController', function($scope, $http) {
                 $scope.States = [];
                 $scope.test = function() {
-                    $http({method: 'GET', url: "http://192.168.1.105:3000/states.json"}).success(function(data) {
+                    $http({method: 'GET', url: "http://192.168.1.106:3000/states.json"}).success(function(data) {
                         $scope.states = data;
                     });
 
@@ -171,7 +172,7 @@
                 $scope.Services = [];
                 $scope.test = function() {
                     var params = (typeof($routeParams.city_id) != "undefined" && $routeParams.city_id != null) ? "?city_id=" + $routeParams.city_id : "";
-                    $http({method: 'GET', url: "http://192.168.1.105:3000/services.json" + params}).success(function(data) {
+                    $http({method: 'GET', url: "http://192.168.1.106:3000/services.json" + params}).success(function(data) {
                         $scope.services = data;
                     });
 
